@@ -12,7 +12,6 @@ source:
     - 0001-arm64-use-a-dedicated-dylib-for-trampolines-so-it-ca.patch
     - 0002-Add-support-for-ffi_find_closure_for_code_np-on-Appl.patch
     # Windows-specific:
-    - 0003-lower-autoconf-required-version.patch                       # [win]
     - 0004-Don-t-define-FFI_COMPLEX_TYPEDEF-ifndef-FFI_TARGET_H.patch  # [win]
 
 build:
