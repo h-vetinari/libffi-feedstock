@@ -207,7 +207,7 @@ index 67a94a8..f5752a4 100644
 +  trampoline_table_page = &ffi_closure_trampoline_table_page;
 +#endif
  
- #ifdef HAVE_PTRAUTH
+ #ifdef HAVE_ARM64E_PTRAUTH
 -  trampoline_page_template = (vm_address_t)(uintptr_t)ptrauth_auth_data((void *)&ffi_closure_trampoline_table_page, ptrauth_key_function_pointer, 0);
 +  trampoline_page_template = (uintptr_t)ptrauth_auth_data(trampoline_table_page, ptrauth_key_function_pointer, 0);
  #else
