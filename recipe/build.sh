@@ -29,9 +29,9 @@ if [[ "$target_platform" == linux* ]]; then
   sed -i 's:@toolexeclibdir@:${libdir}:g' libffi.pc.in
 fi
 
-./configure "${configure_args[@]}" || { cat config.log; exit 1;}
+./configure "${configure_args[@]}" || { cat x86_64-pc-mingw32/config.log; exit 1;}
 if [[ "$target_platform" == win-64 ]]; then
-  pushd x86_64-pc-mingw64
+  pushd x86_64-pc-mingw32
     patch_libtool
     sed -i.bak 's/|-fuse-ld/|-Xclang|-fuse-ld/g' libtool
   popd
