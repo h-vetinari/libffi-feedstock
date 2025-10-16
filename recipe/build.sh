@@ -23,6 +23,8 @@ fi
 
 autoreconf -vfi
 
+find ${SRC_DIR} -type f -name "config.sub" -exec cp $BUILD_PREFIX/share/gnuconfig/config.* "{}" \;
+
 if [[ "$target_platform" == linux* ]]; then
   # this changes the install dir from ${PREFIX}/lib64 to ${PREFIX}/lib
   sed -i 's:@toolexeclibdir@:$(libdir):g' Makefile.in */Makefile.in
