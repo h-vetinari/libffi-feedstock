@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
+set -e -x
+shopt -s extglob
+
 for file in $(find ${SRC_DIR} -type f -name "config.sub"); do
   cp $BUILD_PREFIX/share/gnuconfig/config.sub ${file}
 done
 for file in $(find ${BUILD_PREFIX}/Library/usr/share -type f -name "config.sub"); do
   cp $BUILD_PREFIX/share/gnuconfig/config.sub ${file}
 done
-
-set -e -x
-shopt -s extglob
 
 export CFLAGS="${CFLAGS//-fvisibility=+([! ])/}"
 export CXXFLAGS="${CXXFLAGS//-fvisibility=+([! ])/}"
