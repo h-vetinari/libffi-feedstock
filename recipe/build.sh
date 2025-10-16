@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 for file in $(find ${SRC_DIR} -type f -name "config.sub"); do
-  cp $BUILD_PREFIX/share/gnuconfig/config.* ${file}
+  cp $BUILD_PREFIX/share/gnuconfig/config.sub ${file}
 done
 for file in $(find ${BUILD_PREFIX}/Library/usr/share -type f -name "config.sub"); do
-  cp $BUILD_PREFIX/share/gnuconfig/config.* ${file}
+  cp $BUILD_PREFIX/share/gnuconfig/config.sub ${file}
 done
 
 set -e -x
