@@ -30,8 +30,10 @@ if [[ "$target_platform" == linux* ]]; then
 fi
 
 if [[ "$target_platform" == win-64 ]]; then
+  export host_alias=x86_64-pc-windows-msvc
   export CFLAGS="$CFLAGS --target=x86_64-pc-windows-msvc"
 elif [[ "$target_platform" == win-arm64 ]]; then
+  export host_alias=aarch64-pc-windows-msvc
   export CFLAGS="$CFLAGS --target=aarch64-pc-windows-msvc"
 fi
 
