@@ -44,14 +44,9 @@ elif [[ "$target_platform" == win-arm64 ]]; then
   export CFLAGS="$CFLAGS --target=aarch64-pc-windows-msvc"
 fi
 
-./configure "${configure_args[@]}" || { cat x86_64-pc-mingw32/config.log; exit 1;}
-if [[ "$target_platform" == win-64 ]]; then
-  pushd x86_64-pc-mingw64
-    patch_libtool
-    sed -i.bak 's/|-fuse-ld/|-Xclang|-fuse-ld/g' libtool
-  popd
-elif [[ "$target_platform" == win-arm64 ]]; then
-  pushd x86_64-pc-mingw32
+./configure "${configure_args[@]}" || { cat ${host_alias}/config.log; exit 1;}
+if [[ "$target_platform" == win-* ]]; then
+  pushd ${host_alias}
     patch_libtool
     sed -i.bak 's/|-fuse-ld/|-Xclang|-fuse-ld/g' libtool
   popd
