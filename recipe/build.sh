@@ -59,6 +59,6 @@ make install
 # This overlaps with libgcc-ng:
 rm -rf ${PREFIX}/share/info/dir
 
-if [[ "$target_platform" == win-64 ]]; then
+if [[ "$target_platform" == win-* ]]; then
   mv $PREFIX/lib/ffi.dll.lib $PREFIX/lib/libffi.dll.lib
 fi
