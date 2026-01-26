@@ -1,0 +1,35 @@
+From 3470cc101b625a7d68487ab28f93ff5b5a8957fe Mon Sep 17 00:00:00 2001
+From: Isuru Fernando <isuruf@gmail.com>
+Date: Mon, 26 Jan 2026 09:31:46 -0800
+Subject: [PATCH 3/4] define extend_hfa_type with inline assembly for clang on
+ win arm64
+
+---
+ src/aarch64/ffi.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/aarch64/ffi.c b/src/aarch64/ffi.c
+index 486fe27..bb19a1d 100644
+--- a/src/aarch64/ffi.c
++++ b/src/aarch64/ffi.c
+@@ -377,7 +377,7 @@ extend_integer_type (void *source, int type)
+     }
+ }
+ 
+-#if defined(_MSC_VER)
++#if defined(_MSC_VER) && !defined(__clang__)
+ void extend_hfa_type (void *dest, void *src, int h);
+ #else
+ static void
+@@ -448,7 +448,7 @@ extend_hfa_type (void *dest, void *src, int h)
+ }
+ #endif
+ 
+-#if defined(_MSC_VER)
++#if defined(_MSC_VER) && !defined(__clang__)
+ void* compress_hfa_type (void *dest, void *src, int h);
+ #else
+ static void *
+-- 
+2.45.2
+
